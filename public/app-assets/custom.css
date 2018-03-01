@@ -1,0 +1,16 @@
+#att_notification{
+	background:transparent;
+	border:transparent;
+	color: black;
+}
+#att_notification:hover {
+	background:transparent;
+	border:transparent;
+	color: black;
+}
+#att_table{
+	font-size:14px;
+}
+ .errormsg {
+	color:#13a89e;
+}
