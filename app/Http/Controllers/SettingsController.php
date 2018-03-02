@@ -73,7 +73,7 @@ class SettingsController extends Controller
      public function department()
     {   
         $obj=new department;
-        $departmentcollection=$obj->get();
+        $departmentcollection=$obj->paginate(9);
         return view('settings.departments',['department'=>$departmentcollection]);
 
     }
@@ -119,7 +119,7 @@ class SettingsController extends Controller
      public function designation()
     {
         $obj=new designation;
-        $designationcollection=$obj->get();
+        $designationcollection=$obj->paginate(9);
         return view('settings.designations',['designation'=>$designationcollection]);
 
     }

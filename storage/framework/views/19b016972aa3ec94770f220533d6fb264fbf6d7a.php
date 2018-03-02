@@ -200,6 +200,10 @@
 				            </tr>
 				        </tfoot>
 					</table>
+                     <div class="col-md-6"> 
+                         <?php echo e($attendance->links()); ?>
+
+                    </div>
                     <?php endif; ?>
 					<!--/ Task List table -->
 				</div>

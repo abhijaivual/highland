@@ -85,7 +85,8 @@
 		                            <label class="col-md-3 label-control" for="projectinput3">E-mail</label>
 		                            <div class="col-md-9">
 		                            	<input type="email" id="email" value="{{old('email')}}" class="form-control" placeholder="E-mail" name="email">
-		                            </div>
+		                              <p id="check_result_2" class="errormsg" style="color:#13a89e;"></p>
+                                </div>
 		                        </div>
 
 			                    <div class="form-group row">
@@ -260,5 +261,27 @@ $(document).ready(function(){
     });
 });
 </script>
+<script>
+$(document).ready(function(){
+    $('#email').change(function(){
+        var emailid = $(this).val();
+        $.ajax({
+            url:"/check-emailid/" + emailid,
+            method: "GET",
+            success: function(data){
+                $('#check_result_2').html(data.html);
 
+                if(data.check==1)
+                {
+                  $("#register").attr("disabled","disabled");
+                }
+                else  if(data.check==0)
+                {
+                  $('#register').removeAttr('disabled');
+                }
+            }
+        });
+    });
+});
+</script>
     @endsection

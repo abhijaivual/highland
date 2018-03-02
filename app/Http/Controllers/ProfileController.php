@@ -33,16 +33,16 @@ class ProfileController extends Controller
          ->leftjoin('roles','roles.role_id','=','users.r_id')
         ->where('users.r_id','!=',2)
          ->where('users.r_id','!=',1)
-        ->paginate(10);
+        ->paginate(9);
 
 
-     	 $total=$obj->count('id');
-     	 $created=$obj->where('profile_status','=','created')->count('id');
-     	 $not_completed=$obj->where('profile_status','=','not_completed')->count('id');
-     	  $processing=$obj->where('profile_status','=','processing')->count('id');
-     	 $activated=$obj->where('profile_status','=','activated')->count('id');
-     	 $deactivated=$obj->where('profile_status','=','deactivated')->count('id');
-     	 $removed=$obj->where('profile_status','=','removed')->count('id');
+     	 $total=$obj->where('r_id','!=',1)->where('r_id','!=',2)->count('id');
+     	 $created=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','created')->count('id');
+     	 $not_completed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','not_completed')->count('id');
+     	  $processing=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','processing')->count('id');
+     	 $activated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','activated')->count('id');
+     	 $deactivated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','deactivated')->count('id');
+     	 $removed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','removed')->count('id');
 
 		$obj4=new department;
        	$departmentcollection=$obj4->get();
@@ -72,16 +72,16 @@ class ProfileController extends Controller
          ->orwhere('employee_type','like','%'.$key.'%')
          ->orwhere('departments.department_name','like','%'.$key.'%')
          ->orwhere('designations.designation_name','like','%'.$key.'%')
-         ->paginate(10);
+         ->paginate(9);
 
 
-     	 $total=$obj->count('id');
-     	 $created=$obj->where('profile_status','=','created')->count('id');
-     	 $not_completed=$obj->where('profile_status','=','not_completed')->count('id');
-     	  $processing=$obj->where('profile_status','=','processing')->count('id');
-     	 $activated=$obj->where('profile_status','=','activated')->count('id');
-     	 $deactivated=$obj->where('profile_status','=','deactivated')->count('id');
-     	 $removed=$obj->where('profile_status','=','removed')->count('id');
+     	$total=$obj->where('r_id','!=',1)->where('r_id','!=',2)->count('id');
+       $created=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','created')->count('id');
+       $not_completed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','not_completed')->count('id');
+        $processing=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','processing')->count('id');
+       $activated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','activated')->count('id');
+       $deactivated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','deactivated')->count('id');
+       $removed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','removed')->count('id');
 
 		$obj4=new department;
        	$departmentcollection=$obj4->get();
@@ -114,13 +114,13 @@ class ProfileController extends Controller
 		$obj3=new designation;
         $designationcollection=$obj3->get();
 
-         $total=$obj->count('id');
-     	 $created=$obj->where('profile_status','=','created')->count('id');
-     	 $not_completed=$obj->where('profile_status','=','not_completed')->count('id');
-     	  $processing=$obj->where('profile_status','=','processing')->count('id');
-     	 $activated=$obj->where('profile_status','=','activated')->count('id');
-     	 $deactivated=$obj->where('profile_status','=','deactivated')->count('id');
-     	 $removed=$obj->where('profile_status','=','removed')->count('id');
+         $total=$obj->where('r_id','!=',1)->where('r_id','!=',2)->count('id');
+       $created=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','created')->count('id');
+       $not_completed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','not_completed')->count('id');
+        $processing=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','processing')->count('id');
+       $activated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','activated')->count('id');
+       $deactivated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','deactivated')->count('id');
+       $removed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','removed')->count('id');
 
 
 		if($dept!=0 && $desig!=0)
@@ -235,13 +235,13 @@ class ProfileController extends Controller
          }
 
 
-     	  $total=$obj->count('id');
-	     	 $created=$obj->where('profile_status','=','created')->count('id');
-	     	 $not_completed=$obj->where('profile_status','=','not_completed')->count('id');
-	     	  $processing=$obj->where('profile_status','=','processing')->count('id');
-	     	 $activated=$obj->where('profile_status','=','activated')->count('id');
-	     	 $deactivated=$obj->where('profile_status','=','deactivated')->count('id');
-	     	 $removed=$obj->where('profile_status','=','removed')->count('id');
+     	 $total=$obj->where('r_id','!=',1)->where('r_id','!=',2)->count('id');
+       $created=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','created')->count('id');
+       $not_completed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','not_completed')->count('id');
+        $processing=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','processing')->count('id');
+       $activated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','activated')->count('id');
+       $deactivated=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','deactivated')->count('id');
+       $removed=$obj->where('r_id','!=',1)->where('r_id','!=',2)->where('profile_status','=','removed')->count('id');
 
 			$obj4=new department;
 	       	$departmentcollection=$obj4->get();
@@ -477,26 +477,78 @@ class ProfileController extends Controller
   
     $res=$user->notifications()->where('id',$notid)->update(['read_at' =>now()]);
    // echo $res;
-    return \Redirect('/profile')
-    ->with('status',$user->first_name.'&nbsp;Profile Activated successfully');
+
+     return redirect()->action(
+    'ProfileController@single_profile_view', ['id' => $id2])
+        ->with('status',$user->first_name.'&nbsp;Profile Activated successfully');
+
+    /*return \Redirect('/profile')
+    ->with('status',$user->first_name.'&nbsp;Profile Activated successfully');*/
     }
 	}
+
+public function reject_profile_request($id,$id2)
+  {
+    if(Auth::check())
+    {
+      $userid=Auth::User()->id;
+    
+    
+   //change account status back to not_completed 
+    $obj = new User;
+    $status="not_completed";
+    $updateprofilestatus=$obj->where('id','=',$id2)->update(['profile_status'=>$status]);
+
+    //read the notification here
+    $user=User::find($userid);
+    $notid=$id;
+  
+    $res=$user->notifications()->where('id',$notid)->update(['read_at' =>now()]);
+   // echo $res;
+
+     return redirect()->action(
+    'ProfileController@single_profile_view', ['id' => $id2])
+        ->with('status','Profile Activated successfully');
+
+    /*return \Redirect('/profile')
+    ->with('status',$user->first_name.'&nbsp;Profile Activated successfully');*/
+    }
+  }
+
+    
 	
+
+
 	//view profile of particular user
-	public function single_profile_view(Request $request)
-	{
-		$id=$request->id;
-		$obj=new User;
-        $usercollection=$obj->leftjoin('departments','departments.dept_id','=','users.department_id')
-        ->leftjoin('designations','designations.desig_id','=','users.designation_id')
 
-     
+  public function single_profile_view($id)
+  {
+    if(Auth::check())
+      {
+        
+            if(Auth::User()->r_id==3 || Auth::User()->r_id==2 || Auth::User()->r_id==1 || Auth::User()->id==$id)
+            {
 
-        ->where('users.id','=',$id)
-        ->get();
-		return view('profile.single_profile',['user'=>$usercollection]);
+                $id=$id;
+                $obj=new User;
+                    $usercollection=$obj->leftjoin('departments','departments.dept_id','=','users.department_id')
+                    ->leftjoin('designations','designations.desig_id','=','users.designation_id')
+
+                 
+
+                    ->where('users.id','=',$id)
+                    ->get();
+                return view('profile.single_profile',['user'=>$usercollection]);
+            }
+            else
+            {
+            return redirect('/error-404/');
+            }
+       
+      }
        // return $usercollection;
-	}
+  }
+
 
 
 
@@ -997,25 +1049,37 @@ public function update_payslip_submit(Request $request)
 
 //my profile Edit
 
-public function profile_edit(Request $request)
+public function profile_edit_panel($id)
   {
+    if(Auth::check())
+      {
+        
+            if(Auth::User()->r_id==3 || Auth::User()->r_id==2 || Auth::User()->r_id==1 || Auth::User()->id==$id)
+            {
     
-    $id=$request->employeeid;
+                $id=$id;
 
-    $obj=new User;
-        $usercollection=$obj->leftjoin('departments','departments.dept_id','=','users.department_id')
-        ->leftjoin('designations','designations.desig_id','=','users.designation_id')
-        ->where('users.id','=',$id)
-        ->get();
+                $obj=new User;
+                    $usercollection=$obj->leftjoin('departments','departments.dept_id','=','users.department_id')
+                    ->leftjoin('designations','designations.desig_id','=','users.designation_id')
+                    ->where('users.id','=',$id)
+                    ->get();
 
-        $obj2=new department;
-           $departmentcollection=$obj2->get();
+                    $obj2=new department;
+                       $departmentcollection=$obj2->get();
 
-            $obj3=new designation;
-           $designationcollection=$obj3->get();
+                        $obj3=new designation;
+                       $designationcollection=$obj3->get();
 
-    return view('profile.single_profile',['user'=>$usercollection,'employeeid'=>$id,'department'=>$departmentcollection,'designation'=>$designationcollection]);
+                return view('profile.single_profile',['user'=>$usercollection,'employeeid'=>$id,'department'=>$departmentcollection,'designation'=>$designationcollection]);
+             }
+            else
+            {
+            return redirect('/error-404/');
+            }
+
   }
+}
 
 
 

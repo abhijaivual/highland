@@ -166,6 +166,9 @@
 				            </tr>
 				        </tfoot>
 					</table>
+                     <div class="col-md-6"> 
+                         {{ $attendance->links() }}
+                    </div>
 					<!--/ Task List table -->
 				</div>
             </div>

@@ -62,12 +62,14 @@
 	                <table id="users-contacts" class="table table-white-space table-bordered row-grouping display table-responsive no-wrap icheck table-middle">
 				      
 				            <tr>
+                       
 				             	<th>First Name</th>
+                      <th>Actions</th>
                       <th>profile status</th>
 				                <th>Employee Type</th>
 				                <th>Department</th>
 				               	<th>Designation</th> 
-				                <th>Actions</th>
+				               
 				            </tr>
 
 				  	 <?php
@@ -75,11 +77,13 @@
                			 {
                 	?>
                 		<tr <?php if($arr->profile_status=="deactivated"): ?> style="background-color: #8080802e;" <?php endif; ?>>
+
 							<td>
                 
-              
+               <a href="<?php echo e(url('/view-profile/'.$arr->id)); ?>">
 								<div class="media">
 								<div class="media-left">
+                  
 						        <span class="avatar avatar-sm avatar-online rounded-circle">
                       <?php if(isset($arr->profile_image)): ?>
 						        <img src="<?php echo e(URL::asset($arr->profile_image)); ?>" alt="" ><i></i>
@@ -87,32 +91,27 @@
                      <img src="<?php echo e(URL::asset('user.png')); ?>" alt="" ><i></i>
                     <?php endif; ?>
 						        </span>
+
 						    	</div>
 						    	<div class="media-body media-middle"><?php echo e($arr->first_name); ?>&nbsp;<?php echo e($arr->last_name); ?>
 
                    
 						    	</div>
 						    	</div>
-                
+                </a>
              
 						    </td>
-                        <td><?php echo e($arr->profile_status); ?></td>
-                 			  <td><?php echo e($arr->employee_type); ?></td>
-                  			<td><?php echo e($arr->department_name); ?></td>
-                        <td><?php echo e($arr->designation_name); ?></td>
-               				  
-               				<td>
-				                <span class="dropdown">
-				                 <button id="btnSearchDrop23" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right">
-				                 <i class="icon-cog3"></i>
-				             	</button>
-				                 <span aria-labelledby="btnSearchDrop23" class="dropdown-menu mt-1 dropdown-menu-right">
-                           <form method="post" action="<?php echo e(url('/view-profile/')); ?>"> 
-                             <input type="hidden" name="id" value="<?php echo e($arr->id); ?>">
-                             <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-				                 <a href="" class="dropdown-item"><i class="icon-circle-plus success"></i><button type="submit" style="color:#55595C;background: transparent;border-color:transparent;:"> View</button></a>
+
+                  <td>
+                        <span class="dropdown">
+                         <button id="btnSearchDrop23" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right">
+                         <i class="icon-cog3"></i>
+                      </button>
+                         <span aria-labelledby="btnSearchDrop23" class="dropdown-menu mt-1 dropdown-menu-right">
+                          
+                         <a href="<?php echo e(url('/view-profile/'.$arr->id)); ?>" class="dropdown-item"><i class="icon-circle-plus success"></i> View</a>
                        </form>
-				                 <a href="<?php echo e(url('/edit-profile/'.$arr->id)); ?>" class="dropdown-item"><i class="icon-pen3"></i> Edit</a>
+                         <a href="<?php echo e(url('/profile/edit/'.$arr->id)); ?>" class="dropdown-item"><i class="icon-pen3"></i> Edit</a>
                          <?php if($arr->profile_status=="not_completed" || $arr->profile_status=="created" || $arr->profile_status=="processing"): ?>
                             <a href="<?php echo e(url('/full-registration/'.$arr->id)); ?>" class="dropdown-item"><i class="icon-pen3"></i> Full Registration </a>
                             <?php endif; ?>
@@ -125,9 +124,15 @@
                          </a>
                           <a href="<?php echo e(url('/upload/document/panel/'.$arr->id)); ?>" class="dropdown-item"><i class="icon-pen3"></i> Upload Documents</a>
                             
-				                 </span>
-				                 </span>
-				            </td>
+                         </span>
+                         </span>
+                    </td>
+                        <td><?php echo e($arr->profile_status); ?></td>
+                 			  <td><?php echo e($arr->employee_type); ?></td>
+                  			<td><?php echo e($arr->department_name); ?></td>
+                        <td><?php echo e($arr->designation_name); ?></td>
+               				  
+               				
               			</tr>
 
 
@@ -136,13 +141,13 @@
 						}
            			?>
 				            
-				      
+				       
 				    </table>
-            
-         <div class="col-md-6"> 
-              <?php echo $profile->render(); ?>
+            <div class="col-md-6"> 
+              <?php echo e($profile->links()); ?>
 
-          </div>
+          </div> 
+       
 				</div>
 			</div>
 			</div>

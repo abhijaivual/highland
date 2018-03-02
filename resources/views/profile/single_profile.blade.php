@@ -84,11 +84,9 @@
                         <div class="col-xs-4 text-xs-right">
                             <!-- edit profile for hr and user -->
                               @if(!isset($employeeid))
-                            <form  action="{{url('/profile/edit/')}}" method="post">
-                          <input type="hidden" name="employeeid" value="{{$arr->id}}">
-                          {{ csrf_field() }}
-                          <button type="submit" class="btn btn-primary">Edit</button>
-                          </form> 
+                          
+                         <a href="{{url('/profile/edit/'.$arr->id)}}"> <button  class="btn btn-primary">Edit</button></a>
+                         
                               @endif
 
                             @if($arr->profile_status!="activated" && $arr->profile_status!="deactivated")
@@ -97,8 +95,12 @@
                             <button type="button" class="btn btn-primary hidden-xs-down">
                             <i class="icon-plus4"></i> Confirm</button>
                             </a>
+                              <a href="{{url('/reject/profile/request/'.$not_id.'/'.$arr->id) }}"> 
+                            <button type="button" class="btn btn-danger hidden-xs-down">
+                            <i class="icon-plus4"></i> Reject</button>
+                            </a>
                             @endif
-                         
+                             
                              @endif
                        </div>
                     </div>

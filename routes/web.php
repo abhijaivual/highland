@@ -19,34 +19,40 @@ use App\department;
 Route::get('/', ['as' => '/', 'uses' => 'AuthController@login']);
 Route::post('/login-process', ['as' => '/login-process', 'uses' => 'AuthController@login_process']);
 Route::get('/logout', ['as' => '/logout', 'uses' => 'AuthController@logout']);
+Route::get('/error-404', ['as' => '/error-404', 'uses' => 'AuthController@error_404']);
 
 //dashboard routes
 Route::get('/dashboard', ['as' => '/dashboard', 'uses' => 'DashboardController@dashboard']);
 
-Route::get('/profile/{id1}/{id2}', ['as' => '/profile/{id1}/{id2}', 'uses' => 'ProfileController@single_profile']);
+/**/
 
 //Registration process 1 routes
 Route::get('/registration/process-1/', ['as' => '/registration/process-1/', 'uses' => 'RegisterController@simple_rigisterattion']);
 Route::post('/registration-1/submit', ['as' => '/registration/submit', 'uses' => 'RegisterController@register_process1']);
 Route::get('/check-empid/{id}', 'RegisterController@check_for_duplicate_employee');
-
+Route::get('/check-emailid/{id}', 'RegisterController@check_for_duplicate_email');
 //Registration process 2 routes
 Route::get('/registration/process-2/', ['as' => '/registration/process-2/', 'uses' => 'RegisterController@full_rigisterattion']);
 Route::post('/registration-2/submit', ['as' => '/registration/submit', 'uses' => 'RegisterController@register_process2']);
 Route::get('/sucessfull-registration', ['as' => '/sucessfull-registration', 'uses' => 'RegisterController@successful_registration']);
 
-
+//profile routes
 Route::get('/profile', ['as' => '/profile', 'uses' => 'ProfileController@view_profile']);
 Route::get('/search', ['as' => '/search', 'uses' => 'ProfileController@search2']);
-Route::post('/view-profile/', ['as' => '/view-profile/', 'uses' => 'ProfileController@single_profile_view']);
+Route::get('/view-profile/{id}', ['as' => '/view-profile/{id}', 'uses' => 'ProfileController@single_profile_view']);
 
 
-Route::post('/profile/edit/', ['as' => '/profile/edit/', 'uses' => 'ProfileController@profile_edit']);
+Route::get('/profile/edit/{id}', ['as' => '/profile/edit/{id}', 'uses' => 'ProfileController@profile_edit_panel']);
 Route::post('/profile/edit/submit/', ['as' => '/profile/edit/submit/', 'uses' => 'ProfileController@profile_edit_submit']);
 Route::post('/change/profile/image/', ['as' => '/change/profile/image/', 'uses' => 'ProfileController@profile_image_edit_submit']);
 
 
 Route::get('/confirm/profile/request/{id}/{id2}', ['as' => '/confirm/profile/request/{id}/{id2}', 'uses' => 'ProfileController@confirm_profile_request']);
+Route::get('/reject/profile/request/{id}/{id2}', ['as' => '/reject/profile/request/{id}/{id2}', 'uses' => 'ProfileController@reject_profile_request']);
+
+Route::get('/profile/{id1}/{id2}', ['as' => '/profile/{id1}/{id2}', 'uses' => 'ProfileController@single_profile']);
+
+
 Route::get('/search/profile/', ['as' => '/search/profile/', 'uses' => 'ProfileController@search_profile']);
 Route::get('/profiles/{id}', ['as' => '/profiles/{id}', 'uses' => 'ProfileController@profile_status_profiles']);
 Route::get('/full-registration/{id}', ['as' => '/full-registration/{id}', 'uses' => 'ProfileController@full_registration']);
@@ -92,6 +98,7 @@ Route::get('/my-resume/{id}', ['as' => '/my-resume/{id}', 'uses' => 'ProfileCont
 // Route::get('/my-pay-slips/{id}', ['as' => '/my-pay-slips/{id}', 'uses' => 'ProfileController@my_pay_slips']);
 
 //Attendence routes
+
 Route::get('/upload-attendance', ['as' => '/upload-attendance', 'uses' => 'AttendanceController@upload_attendance']);
 Route::post('/import', ['as' => '/import', 'uses' => 'AttendanceController@import_my_excel']);
 Route::get('/attendance/table', ['as' => '/attendance/table', 'uses' => 'AttendanceController@view_all_attendance']);
@@ -102,6 +109,9 @@ Route::get('today/attendance/table',['as' => 'today/attendance/table','uses' => 
 
 Route::get('/view/attendance/{empid}/{attid}', ['as' => '/view/attendance/{empid}{/attid}', 'uses' => 'AttendanceController@view_attendance']);
 Route::post('/edit-attendance/submit', ['as' => '/edit-attendance/submit', 'uses' => 'AttendanceController@edit_attendance_intime_submit']);
+
+//my attendance list
+Route::get('/my/attendance/list/{id}', ['as' => '/my/attendance/list/{id}', 'uses' => 'AttendanceController@my_attendance_list']);
 
 //Settings routes
 Route::get('/roles', ['as' => '/roles', 'uses' => 'SettingsController@role']);

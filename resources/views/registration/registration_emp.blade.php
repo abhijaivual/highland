@@ -496,22 +496,14 @@
                                  <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="profile">Expirience Letter :</label>
-                                            <input type="file" class="form-control" name="expirience_letter[]" multiple="" 
-                                            <?php if($arr->employee_type=="Permanent") { ?>
-                                            required=""
-                                            <?php } ?>
-                                            >
+                                            <input type="file" class="form-control" name="expirience_letter[]" multiple=""  >
                                         </div>
                                 </div>
 
                                  <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="profile">Pay-Slips :</label>
-                                            <input type="file" class="form-control" name="payslip[]" multiple=""
-                                             <?php if($arr->employee_type=="Permanent") { ?>
-                                            required=""
-                                            <?php } ?>
-                                            >
+                                            <input type="file" class="form-control" name="payslip[]" multiple="" >
                                         </div>
                                 </div>
                             </div>

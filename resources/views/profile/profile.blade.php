@@ -62,12 +62,14 @@
 	                <table id="users-contacts" class="table table-white-space table-bordered row-grouping display table-responsive no-wrap icheck table-middle">
 				      
 				            <tr>
+                       
 				             	<th>First Name</th>
+                      <th>Actions</th>
                       <th>profile status</th>
 				                <th>Employee Type</th>
 				                <th>Department</th>
 				               	<th>Designation</th> 
-				                <th>Actions</th>
+				               
 				            </tr>
 
 				  	 <?php
@@ -75,11 +77,13 @@
                			 {
                 	?>
                 		<tr @if($arr->profile_status=="deactivated") style="background-color: #8080802e;" @endif>
+
 							<td>
                 
-              
+               <a href="{{url('/view-profile/'.$arr->id)}}">
 								<div class="media">
 								<div class="media-left">
+                  
 						        <span class="avatar avatar-sm avatar-online rounded-circle">
                       @if(isset($arr->profile_image))
 						        <img src="{{URL::asset($arr->profile_image) }}" alt="" ><i></i>
@@ -87,31 +91,26 @@
                      <img src="{{URL::asset('user.png') }}" alt="" ><i></i>
                     @endif
 						        </span>
+
 						    	</div>
 						    	<div class="media-body media-middle">{{$arr->first_name }}&nbsp;{{$arr->last_name}}
                    
 						    	</div>
 						    	</div>
-                
+                </a>
              
 						    </td>
-                        <td>{{$arr->profile_status}}</td>
-                 			  <td>{{$arr->employee_type}}</td>
-                  			<td>{{$arr->department_name}}</td>
-                        <td>{{$arr->designation_name}}</td>
-               				  
-               				<td>
-				                <span class="dropdown">
-				                 <button id="btnSearchDrop23" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right">
-				                 <i class="icon-cog3"></i>
-				             	</button>
-				                 <span aria-labelledby="btnSearchDrop23" class="dropdown-menu mt-1 dropdown-menu-right">
-                           <form method="post" action="{{url('/view-profile/')}}"> 
-                             <input type="hidden" name="id" value="{{$arr->id}}">
-                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-				                 <a href="" class="dropdown-item"><i class="icon-circle-plus success"></i><button type="submit" style="color:#55595C;background: transparent;border-color:transparent;:"> View</button></a>
+
+                  <td>
+                        <span class="dropdown">
+                         <button id="btnSearchDrop23" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right">
+                         <i class="icon-cog3"></i>
+                      </button>
+                         <span aria-labelledby="btnSearchDrop23" class="dropdown-menu mt-1 dropdown-menu-right">
+                          
+                         <a href="{{url('/view-profile/'.$arr->id)}}" class="dropdown-item"><i class="icon-circle-plus success"></i> View</a>
                        </form>
-				                 <a href="{{ url('/edit-profile/'.$arr->id) }}" class="dropdown-item"><i class="icon-pen3"></i> Edit</a>
+                         <a href="{{url('/profile/edit/'.$arr->id)}}" class="dropdown-item"><i class="icon-pen3"></i> Edit</a>
                          @if($arr->profile_status=="not_completed" || $arr->profile_status=="created" || $arr->profile_status=="processing")
                             <a href="{{ url('/full-registration/'.$arr->id) }}" class="dropdown-item"><i class="icon-pen3"></i> Full Registration </a>
                             @endif
@@ -124,9 +123,15 @@
                          </a>
                           <a href="{{ url('/upload/document/panel/'.$arr->id) }}" class="dropdown-item"><i class="icon-pen3"></i> Upload Documents</a>
                             
-				                 </span>
-				                 </span>
-				            </td>
+                         </span>
+                         </span>
+                    </td>
+                        <td>{{$arr->profile_status}}</td>
+                 			  <td>{{$arr->employee_type}}</td>
+                  			<td>{{$arr->department_name}}</td>
+                        <td>{{$arr->designation_name}}</td>
+               				  
+               				
               			</tr>
 
 
@@ -135,12 +140,12 @@
 						}
            			?>
 				            
-				      
+				       
 				    </table>
-            
-         <div class="col-md-6"> 
-              {!! $profile->render() !!}
-          </div>
+            <div class="col-md-6"> 
+              {{ $profile->links() }}
+          </div> 
+       
 				</div>
 			</div>
 			</div>

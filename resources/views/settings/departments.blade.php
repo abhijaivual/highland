@@ -98,6 +98,9 @@
                            
                         </tbody>
                     </table>
+                     <div class="col-md-6"> 
+                         {{ $department->links() }}
+                    </div>
                 </div>
             </div>
         </div>

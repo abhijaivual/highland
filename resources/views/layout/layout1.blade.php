@@ -214,7 +214,13 @@
                     <a href="{{ url('/profile/'.$notification['id'].'/'.$notification['data']['user']['id'])}}" class="list-group-item">
 
                       <div class="media">
-                        <div class="media-left valign-middle"><img src="{{URL::asset($notification['data']['user']['profile_image']) }}" width="50px" height="50px"></div>
+                        <div class="media-left valign-middle">
+                          @if(isset($notification['data']['user']['profile_image']))
+                          <img src="{{URL::asset($notification['data']['user']['profile_image']) }}" width="50px" height="50px">
+                          @else
+                          <img src="{{URL::asset('user.png') }}" width="50px" height="50px">
+                          @endif
+                        </div>
                         <div class="media-body">
                           <h6 class="media-heading">Pending for Verifcation!</h6>
                           <p class="notification-text font-small-3 text-muted"> {{ $notification['data']['user']['id'] }}</p>
@@ -282,6 +288,7 @@
               </li> -->
 
                <?php
+               
                $profileimage = Auth::user()->profile_image;
                $firstname= Auth::user()->first_name;
                ?>
@@ -295,10 +302,13 @@
                  <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="{{URL::asset('user.png') }}" alt=""><i></i></span><span class="user-name">{{$firstname}}</span></a>
 
                 @endif
-                <div class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a><a href="#" class="dropdown-item"><i class="icon-mail6"></i> My Attendance</a>
+
+                <div class="dropdown-menu dropdown-menu-right"><a href="{{url('/profile/edit/'.Auth::user()->id)}}" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a>
+                  <a href="{{url('/my/attendance/list/'.Auth::user()->id)}}" class="dropdown-item"><i class="icon-mail6"></i> My Attendance</a>
                   <div class="dropdown-divider"></div><a href="{{ url('/logout') }}" class="dropdown-item"><i class="icon-power3"></i> Logout</a>
                 </div>
               </li>
+
             </ul>
             @endif
           </div>
@@ -457,12 +467,11 @@
           <i class="icon-home3"></i><span data-i18n="nav.dash.main">My Profile</span></a>
            </li> -->
            <li  class="dropdown nav-item">
-             <form method="post" action="{{url('/view-profile/')}}"> 
-              <input type="hidden" name="id" value="{{Auth::user()->id}}">
-              <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <a href=""  class="toggle nav-link"><br>
-          <i class="icon-user4"></i><span data-i18n="nav.dash.main"><button type="submit" style="color:#55595C;background: transparent;border-color:transparent;:">My Profile</button></span></a>
-        </form>
+            
+            <a href="{{ url('/view-profile/'.Auth::User()->id)}}"  class="toggle nav-link" >
+          <i class="icon-user4"></i><span data-i18n="nav.dash.main">My Profile</span>
+            </a>
+      
            </li>
         
            @endif
@@ -554,6 +563,11 @@
     <!-- BEGIN VENDOR JS-->
     <!-- build:js app-assets/js/vendors.min.js-->
     <script src="{{ URL::asset('app-assets/js/core/libraries/jquery.min.js') }}" type="text/javascript"></script>
+
+    
+
+
+
     <script src="{{ URL::asset('app-assets/vendors/js/ui/tether.min.js ') }}" type="text/javascript"></script>
     <script src="{{ URL::asset('app-assets/js/core/libraries/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ URL::asset('app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js') }}" type="text/javascript"></script>

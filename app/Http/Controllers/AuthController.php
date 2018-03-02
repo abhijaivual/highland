@@ -107,4 +107,9 @@ class AuthController extends Controller
               return view('login');
             }
         }
+
+        public function error_404()
+        {
+            return view('error_404');
+        }
 }

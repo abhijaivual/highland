@@ -57,7 +57,7 @@ class AttendanceController extends Controller
     public function view_all_attendance()
     {
         $obj = new attendance;
-        $all_records=$obj->leftjoin('users','users.id','=','attendances.empid')->orderby('att_date','desc')->paginate(15);
+        $all_records=$obj->leftjoin('users','users.id','=','attendances.empid')->orderby('att_date','desc')->paginate(9);
         //return $all_records;
         //filter search select box data
          $obj2=new department;

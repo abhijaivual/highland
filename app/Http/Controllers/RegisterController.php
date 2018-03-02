@@ -77,6 +77,26 @@ class RegisterController extends Controller
       return response()->json(['success' => true, 'html' => $html,'check'=>$check]);
   }
 
+   public function check_for_duplicate_email($emailid)
+  {
+     // $request = Request::all();
+      $email = User::where('email', $emailid)->get();
+     
+           if($email->count()>0)
+          {
+          $html = "Email ID is already Exists";
+          $check="1";
+          }
+          else
+          {
+            $html = "Email Id available";
+            $check="0";
+          }
+      
+      
+      return response()->json(['success' => true, 'html' => $html,'check'=>$check]);
+  }
+
     public function register_process1(Request $request)
     {
     	
